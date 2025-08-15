@@ -35,6 +35,7 @@ print("\n===================================\n")
 
 
 
+# # Inheritance
 # Parent class
 class Character:
     def __init__(self, name, health, attack_power):
@@ -82,3 +83,42 @@ warrior.use_shield()    # Output: Conan blocks the attack with a shield!
 mage.move()             # Output: Gandalf is moving!
 mage.attack()           # Output: Gandalf attacks with 25 power!
 mage.cast_spell()       # Output: Gandalf casts a powerful spell!
+
+print("\n===================================\n")
+
+
+
+# # Polymorphism
+from abc import ABC, abstractmethod
+class Character(ABC):
+    @abstractmethod 
+    def attack(self):
+        print("This method should be overridden by subclasses.")
+
+class Warrior(Character):
+    def attack(self):
+        print("Warrior attacks with a sword!")
+
+class Mage(Character):
+    def attack(self):
+        print("Mage casts a fireball!")
+
+# class Archer(Character):
+    # print("Archer shoots an arrow!") # Error
+
+# Using polymorphism in a function
+def perform_attack(character):
+    character.attack()  # Calls the correct method based on the object's class
+
+# Cannot instantiate Character directly: 
+# character = Character() # Raises TypeError
+
+# Creating instances of different character types
+warrior = Warrior()
+mage = Mage()
+# archer = Archer()
+
+# Using polymorphism
+perform_attack(warrior)  # Output: Warrior attacks with a sword!
+perform_attack(mage)     # Output: Mage casts a fireball!
+# perform_attack(archer)   # Output: Archer shoots an arrow! # Error
