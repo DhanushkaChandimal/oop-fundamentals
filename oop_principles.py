@@ -122,3 +122,26 @@ mage = Mage()
 perform_attack(warrior)  # Output: Warrior attacks with a sword!
 perform_attack(mage)     # Output: Mage casts a fireball!
 # perform_attack(archer)   # Output: Archer shoots an arrow! # Error
+
+print("\n===================================\n")
+
+
+
+# # Multiple inheritance
+class Flyer:
+    def fly(self):
+        print("Flying high!")
+
+class Swimmer:
+    def swim(self):
+        print("Swimming fast!")
+
+class Duck(Flyer, Swimmer):
+    def quack(self):
+        print("Quack!")
+
+# Creating an instance of Duck
+duck = Duck()
+duck.fly()     # Output: Flying high!
+duck.swim()    # Output: Swimming fast!
+duck.quack()   # Output: Quack!
