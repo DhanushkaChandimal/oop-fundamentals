@@ -30,3 +30,55 @@ print(account.get_balance("111")) # Output: 5000
 
 # Accessing private attribute via name mangling (not recommended)
 print(account._BankAccount__password) # Output: mypassword
+
+print("\n===================================\n")
+
+
+
+# Parent class
+class Character:
+    def __init__(self, name, health, attack_power):
+        self.name = name
+        self.health = health
+        self.attack_power = attack_power
+
+    def move(self):
+        print(f"{self.name} is moving!")
+
+    def attack(self):
+        print(f"{self.name} attacks with {self.attack_power} power!")
+
+# Subclass: Warrior
+class Warrior(Character):
+    def __init__(self, name, health, attack_power, armor):
+        super().__init__(name, health, attack_power)  # Call the parent class constructor
+        self.armor = armor
+
+    def use_shield(self):
+        print(f"{self.name} blocks the attack with a shield!")
+    
+    def attack(self):
+        # Override the parent class method
+        print(f"{self.name} slashes with a sword, dealing {self.attack_power} damage!")
+
+# Subclass: Mage
+class Mage(Character):
+    def __init__(self, name, health, attack_power, mana):
+        super().__init__(name, health, attack_power)
+        self.mana = mana
+
+    def cast_spell(self):
+        print(f"{self.name} casts a powerful spell!")
+
+# Creating instances
+warrior = Warrior("Conan", 100, 20, "Iron Armor")
+mage = Mage("Gandalf", 80, 25, 100)
+
+# Calling methods
+warrior.move()          # Output: Conan is moving!
+warrior.attack()        # Output: Conan attacks with 20 power!
+warrior.use_shield()    # Output: Conan blocks the attack with a shield!
+
+mage.move()             # Output: Gandalf is moving!
+mage.attack()           # Output: Gandalf attacks with 25 power!
+mage.cast_spell()       # Output: Gandalf casts a powerful spell!
