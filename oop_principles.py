@@ -21,7 +21,7 @@ class SavingsAccount(BankAccount):
 # Create a bank account with a protected balance and private password
 account = BankAccount("Charlie", 5000, "mypassword")
 print(account.account_holder) # Output: Charlie
-print(account._balance) # Output: 5000
+print(account._balance) # Output: 5000 # not recommended
 # print(account.__password) # Raises AttributeError
 
 # Accessing balance with the correct password
