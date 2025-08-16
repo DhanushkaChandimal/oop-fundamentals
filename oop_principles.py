@@ -145,3 +145,43 @@ duck = Duck()
 duck.fly()     # Output: Flying high!
 duck.swim()    # Output: Swimming fast!
 duck.quack()   # Output: Quack!
+
+print("\n===================================\n")
+
+
+
+# # Avoid the Diamond Problem in multiple inheritance
+class A:
+    def greet(self):
+        print("Hello from A")
+
+class B(A):
+    def greet(self):
+        print("Hello from B")
+
+class C(A):
+    def greet(self):
+        print("Hello from C")
+
+class D(B, C):
+    pass
+
+class E(C, B):
+    pass
+
+class G(B, A):
+    pass
+
+d = D()
+d.greet()  # Output: Hello from B
+
+e = E()
+e.greet()  # Output: Hello from C
+
+print(D.mro())
+print(E.mro())
+
+g = G()
+g.greet()  # Output: Hello from C
+
+print(G.mro())
